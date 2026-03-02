@@ -2,5 +2,8 @@
 {
     public interface IConta
     {
+        bool ValidarAbertura();
+
+        string ExibirResumo();
     }
 }
