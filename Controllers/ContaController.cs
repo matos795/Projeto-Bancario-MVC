@@ -7,6 +7,11 @@ namespace SistemaBancario.Controllers
     {
         private static List<Conta> listaContas = new List<Conta>();
 
+        public IActionResult Listar()
+        {
+            return View(listaContas);
+        }
+
         public IActionResult Cadastrar()
         {
             return View();

@@ -1,5 +1,47 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<SistemaBancario.Models.Conta>
+
 @{
+    ViewData["Title"] = "Cadastrar Conta";
+}
+
+<h2>Criar nova Conta</h2>
+
+@if (TempData["Erro"] != null)
+{
+    <div class="alert alert-danger">@TempData["Erro"]</div>
+}
+
+@if (TempData["Sucesso"] != null)
+{
+    <div class="alert alert-success">@TempData["Sucesso"]</div>
+}
+
+<a asp-action="Cadastrar" class="btn btn-success mt-3 mb-3">Cadastrar nova conta</a>
+
+@if(Model.Count == 0) 
+{
+    <div class="alert alert-info">Nenhuma conta cadastrada.</div>
+} else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Resumo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var conta in Model)
+            {
+                <tr>
+                    <td>@Html.Raw(conta.ExibirResumo())</td>
+                    <td>
+                        <a asp-action="Editar" asp-route-numeroConta="@conta.NumeroConta" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-action="Depositar" asp-route-numeroConta="@conta.NumeroConta" class="btn btn-success btn-sm">Depositar</a>
+                        <a asp-action="Sacar" asp-route-numeroConta="@conta.NumeroConta" class="btn btn-primary btn-sm">Sacar</a>
+                        <a asp-action="Remover" asp-route-numeroConta="@conta.NumeroConta" class="btn btn-danger btn-sm">Remover</a>
+                    </td>
+                </tr>
+            }
+    </table>
 }
