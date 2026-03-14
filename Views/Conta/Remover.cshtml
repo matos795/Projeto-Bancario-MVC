@@ -1,5 +1,19 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SistemaBancario.Models.Conta
+
 @{
+    ViewData["Title"] = "Remover Conta";
 }
+
+<h2>Remover Conta</h2>
+
+<p>Tem certeza que deseja remover a conta abaixo?</p>
+
+<div class="card p-3 mb-3">
+    <p>@Html.Raw(Model.ExibirResumo())</p>
+</div>
+
+<form asp-action="RemoverConfirmado" method="post">
+    <input type="hidden" asp-for="NumeroConta" />
+    <button type="submit" class="btn btn-danger">Sim, remover</button>
+    <a asp-action="Listar" class="btn btn-secondary">Cancelar</a>
+</form>

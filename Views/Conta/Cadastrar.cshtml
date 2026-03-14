@@ -19,10 +19,6 @@
 <a asp-action="Listar" class="btn btn-success mt-3 mb-3">Ver todas as contas</a>
 
 <form asp-action="Cadastrar" method="post">
-    <div class="form-group mb-2">
-        <label asp-for="Saldo" class="control-label">Saldo Inicial</label>
-        <input asp-for="Saldo" name="Saldo" class="form-control" />
-    </div>
 
     <div class="form-group mb-2">
         <label asp-for="NomeCliente" class="control-label">Nome do Cliente</label>
@@ -30,14 +26,18 @@
     </div>
 
     <div class="form-group mb-2">
+        <label asp-for="Saldo" class="control-label">Saldo Inicial</label>
+        <input asp-for="Saldo" name="Saldo" class="form-control" />
+    </div>
+
+    <div class="form-group mb-2">
         <label asp-for="TipoConta" class="control-label">Tipo de Conta</label>
-        <select>
+        <select name="TipoConta" class="form-control" required>
             <option value="" disabled selected>Selecione o tipo da conta</option>
             <option value="Corrente">Conta Corrente</option>
-            <option value="Poupanca">Conta Poupança</option>
+            <option value="Poupança">Conta Poupança</option>
         </select>
     </div>
 
     <button type="submit" class="btn btn-primary">Criar Conta</button>
 </form>
-)

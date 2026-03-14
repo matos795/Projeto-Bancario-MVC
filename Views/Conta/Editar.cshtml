@@ -1,5 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SistemaBancario.Models.Conta
+
 @{
+    ViewData["Title"] = "Editar Conta";
 }
+
+<h2>Editar Conta</h2>
+
+<form asp-action="Editar" method="post">
+    <input type="hidden" asp-for="NumeroConta" />
+
+    <div class="form-group mb-2">
+        <label asp-for="NomeCliente" class="control-label">Nome do Cliente</label>
+        <input asp-for="NomeCliente" name="NomeCliente" class="form-control" />
+    </div>
+
+    <div class="form-group mb-2">
+        <label>Saldo atual</label>
+        <input type="text" value="@Model.Saldo.ToString("C")" class="form-control" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a asp-action="Listar" class="btn btn-secondary">Cancelar</a>
+</form>
